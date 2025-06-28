@@ -1,0 +1,323 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 212 24% 10%;
+    --foreground: 222 84% 85%;
+
+    --card: 221 24% 15%;
+    --card-foreground: 222 84% 85%;
+
+    --popover: 221 24% 15%;
+    --popover-foreground: 222 84% 85%;
+
+    --primary: 217 92% 76%;
+    --primary-foreground: 210 40% 2%;
+
+    --secondary: 218 27% 26%;
+    --secondary-foreground: 222 84% 85%;
+
+    --muted: 218 27% 26%;
+    --muted-foreground: 225 16% 70%;
+
+    --accent: 218 27% 26%;
+    --accent-foreground: 222 84% 85%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 219 27% 26%;
+    --input: 219 27% 26%;
+    --ring: 217 92% 76%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar for code areas */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-800;
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-600;
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+
+  /* Code highlighting improvements */
+  pre {
+    font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+    font-feature-settings: "liga" 1, "calt" 1;
+  }
+
+  /* Smooth animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Loading spinner */
+  .loading-spinner {
+    border: 2px solid #414868;
+    border-top: 2px solid #7AA2F7;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900;
+  }
+
+  /* Technical color scheme variables */
+  :root {
+    --tech-bg-primary: #1A1B26;
+    --tech-bg-secondary: #24283B;
+    --tech-border: #414868;
+    --tech-text-primary: #C0CAF5;
+    --tech-text-secondary: #A9B1D6;
+    --tech-text-muted: #565F89;
+    --tech-accent: #7AA2F7;
+    --tech-success: #9ECE6A;
+    --tech-warning: #E0AF68;
+    --tech-error: #F7768E;
+    --tech-info: #7DCFFF;
+    --tech-purple: #BB9AF7;
+  }
+
+  /* File upload drag states */
+  .drag-over {
+    @apply border-blue-400 bg-blue-400/10;
+  }
+
+  /* Status indicators */
+  .status-pending {
+    @apply text-yellow-400;
+  }
+
+  .status-processing {
+    @apply text-blue-400;
+  }
+
+  .status-completed {
+    @apply text-green-400;
+  }
+
+  .status-error {
+    @apply text-red-400;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/10 hover:border-blue-500/50;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-700 hover:bg-gray-600 text-gray-200;
+  }
+
+  .btn-success {
+    @apply bg-green-600 hover:bg-green-700 text-white;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white;
+  }
+
+  /* Typography improvements */
+  .text-code {
+    font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+    @apply text-sm;
+  }
+
+  /* Layout utilities */
+  .container-max {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Custom component styles */
+  .file-list-item {
+    @apply p-3 rounded-lg border border-gray-600 hover:border-gray-500 bg-gray-700/50 cursor-pointer transition-colors;
+  }
+
+  .file-list-item.selected {
+    @apply border-blue-400 bg-blue-400/10;
+  }
+
+  .stats-grid {
+    @apply grid grid-cols-2 gap-3;
+  }
+
+  .stat-card {
+    @apply bg-gray-700/50 rounded-lg p-3;
+  }
+
+  /* Accessibility improvements */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none;
+    }
+  }
+
+  /* Custom scrollbar styles */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #4B5563 #1F2937;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: #1F2937;
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #4B5563;
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #6B7280;
+  }
+
+  .scrollbar-thumb-gray-600 {
+    scrollbar-color: #4B5563 transparent;
+  }
+
+  .scrollbar-track-gray-800 {
+    scrollbar-color: #4B5563 #1F2937;
+  }
+}
+
+/* Component-specific styles */
+@layer components {
+  .upload-area {
+    @apply border-2 border-dashed border-gray-600 hover:border-gray-500 rounded-lg p-6 text-center transition-colors;
+  }
+
+  .upload-area.drag-active {
+    @apply border-blue-400 bg-blue-400/10;
+  }
+
+  .code-viewer {
+    @apply bg-gray-800 border border-gray-700 rounded-lg overflow-hidden;
+  }
+
+  .code-content {
+    @apply p-4 text-xs font-mono text-gray-300 whitespace-pre-wrap break-words leading-relaxed;
+  }
+
+  .config-section {
+    @apply space-y-4 p-4 bg-gray-800 border border-gray-700 rounded-lg;
+  }
+
+  .action-button {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900;
+  }
+
+  .action-button.primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white focus:ring-blue-500;
+  }
+
+  .action-button.secondary {
+    @apply bg-gray-700 hover:bg-gray-600 text-gray-200 focus:ring-gray-500;
+  }
+
+  .statistics-card {
+    @apply bg-gray-800 border border-gray-700 rounded-lg p-4 space-y-4;
+  }
+
+  .file-status-badge {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .file-status-badge.pending {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+
+  .file-status-badge.processing {
+    @apply bg-blue-100 text-blue-800;
+  }
+
+  .file-status-badge.completed {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .file-status-badge.error {
+    @apply bg-red-100 text-red-800;
+  }
+}
